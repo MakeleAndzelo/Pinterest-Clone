@@ -3,3 +3,6 @@
 -@pins.each do |pin|
 	=link_to pin do
 		%h2= pin.title
+	%small
+		Posted by
+		=pin.user.email
