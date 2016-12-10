@@ -1,0 +1,5 @@
+%h1= @pin.title
+%p= @pin.content
+%p
+	=link_to "Edit", edit_pin_path(@pin), class: "btn btn-warning"
+	=link_to "Delete", @pin, method: :delete, class: "btn btn-danger"
