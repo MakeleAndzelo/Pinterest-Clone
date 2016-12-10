@@ -2,7 +2,7 @@ class PinsController < ApplicationController
 	before_action :find_pin, only: [:show, :edit, :update, :destroy]
 
 	def index
-		@pins = Pin.all
+		@pins = Pin.all.order("created_at DESC")
 	end
 
 	def show
@@ -42,7 +42,7 @@ class PinsController < ApplicationController
 	private
 
 		def pin_params
-			params.require(:pin).permit(:title, :content)
+			params.require(:pin).permit(:image, :title, :content)
 		end
 
 		def find_pin
