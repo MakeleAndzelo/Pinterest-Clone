@@ -1,4 +1,10 @@
 class Pin < ApplicationRecord
+	validates :title, presence: true
+	validates :content, presence: true
+	validates :image, presence: true
+
+	acts_as_votable
+
 	belongs_to :user
 
 	has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"

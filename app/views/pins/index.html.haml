@@ -1,8 +1,16 @@
-%h1 Pins!
-
--@pins.each do |pin|
-	=link_to pin do
-		%h2= pin.title
-	%small
-		Posted by
-		=pin.user.email
+-if @pins.any?
+	#pins.transitions-enabled
+		- @pins.each do |pin|
+			.box.panel.panel-default
+				= link_to (image_tag pin.image.url), pin
+				%h2= link_to pin.title, pin
+				%p.user
+					Submitted by
+					= pin.user.email
+- else 
+	.jumbotron
+		.container
+			%h1 Hello!
+			%p There are no pins yet. Sign in to add new pin
+			%p
+				=link_to "Sign in" ,new_user_session_path, class: "btn btn-primary"
